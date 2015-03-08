@@ -83,7 +83,7 @@ on property:init.svc.servicemanager=restarting
 	chown system system /sys/devices/f9925000.i2c/i2c-2/2-0032/leds/G/led_current
 	chown system system /sys/devices/f9925000.i2c/i2c-2/2-0032/leds/B/led_current
 
-    # Touch_Knock_on
+# Touch_Knock_on
     chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
     chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
     chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
