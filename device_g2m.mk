@@ -149,9 +149,6 @@ PRODUCT_PACKAGES += \
     arec \
     alsaucm_test
     
-# Keyhandler
-PRODUCT_PACKAGES += \
-    com.cyanogenmod.keyhandle
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -164,6 +161,10 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Keyhandler
+PRODUCT_PACKAGES += \
+    com.cyanogenmod.keyhandle
 
 # Crda
 PRODUCT_PACKAGES += \
