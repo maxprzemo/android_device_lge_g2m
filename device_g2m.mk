@@ -18,18 +18,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-
 # Specific overlay
 DEVICE_PACKAGE_OVERLAYS += device/lge/g2m/overlay
-
-
-# Keylayout
-PRODUCT_COPY_FILES += \
-    device/lge/g2m/idc/touch_dev.idc:system/usr/idc/touch_dev.idc
-
-PRODUCT_COPY_FILES += \
-    device/lge/g2m/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
-
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -55,72 +45,61 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    device/lge/g2m/prebuilt/etc/permissions/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Configs
 PRODUCT_COPY_FILES += \
     device/lge/g2m/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     device/lge/g2m/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/lge/g2m/prebuilt/etc/firmware/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    device/lge/g2m/prebuilt/etc/firmware/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    device/lge/g2m/prebuilt/etc/firmware/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/lge/g2m/prebuilt/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     device/lge/g2m/prebuilt/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
     device/lge/g2m/prebuilt/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     device/lge/g2m/prebuilt/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
     device/lge/g2m/prebuilt/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     device/lge/g2m/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/lge/g2m/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
     device/lge/g2m/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/g2m/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/g2m/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/lge/g2m/prebuilt/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
-    device/lge/g2m/prebuilt/etc/init.zetaw.fm.sh:system/etc/init.zetaw.fm.sh \
-    device/lge/g2m/prebuilt/etc/init.zetaw.ssr.wifi.sh:system/etc/init.zetaw.ssr.wifi.sh \
-    device/lge/g2m/prebuilt/etc/init.zetaw.wifi.sh:system/etc/init.zetaw.wifi.sh \
-    device/lge/g2m/prebuilt/etc/init.crda.sh:system/etc/init.crda.sh \
-    device/lge/g2m/prebuilt/etc/init.zetaw.post_boot.sh:system/etc/init.zetaw.post_boot.sh \
-    device/lge/g2m/prebuilt/etc/sap.conf:system/etc/sap.conf \
-    device/lge/g2m/prebuilt/etc/gps.conf:system/etc/gps.conf \
+    device/lge/g2m/prebuilt/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
+    device/lge/g2m/prebuilt/usr/keylayout/Generic-D62x.kl:system/usr/keylayout/Generic-D62x.kl \
+    device/lge/g2m/prebuilt/etc/init.zetaw.bt.sh:system/etc/init.zetaw.bt.sh \
     device/lge/g2m/prebuilt/etc/msap.conf:system/etc/msap.conf \
     device/lge/g2m/prebuilt/etc/clatd.conf:system/etc/clatd.conf \
     device/lge/g2m/prebuilt/etc/sec_config:system/etc/sec_config \
-    device/lge/g2m/prebuilt/etc/izat.conf:system/etc/izat.conf \
-    device/lge/g2m/prebuilt/etc/boot_fixup:system/etc/boot_fixup \
-    device/lge/g2m/prebuilt/etc/quipc.conf:system/etc/quipc.conf 
+    device/lge/g2m/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/lge/g2m/prebuilt/etc/nfc-nci.conf:system/etc/nfc-nci.conf \
+    device/lge/g2m/prebuilt/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    device/lge/g2m/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
     device/lge/g2m/rootdir/fstab.g2m:root/fstab.g2m \
-    device/lge/g2m/rootdir/fstab_f2fs.g2m:root/fstab_f2fs.g2m \
-    device/lge/g2m/rootdir/init.class_main.sh:root/init.class_main.sh \
-    device/lge/g2m/rootdir/init.lge.early.rc:root/init.lge.early.rc \
-    device/lge/g2m/rootdir/init.lge.log.rc:root/init.lge.log.rc \
-    device/lge/g2m/rootdir/init.lge.rc:root/init.lge.rc \
-    device/lge/g2m/rootdir/init.mdm.sh:root/init.mdm.sh \
     device/lge/g2m/rootdir/init.g2m.rc:root/init.g2m.rc \
     device/lge/g2m/rootdir/init.g2m.usb.rc:root/init.g2m.usb.rc \
-    device/lge/g2m/rootdir/init.g2m_product.rc:root/init.g2m_product.rc \
-    device/lge/g2m/rootdir/init.zetaw.bt_vendor.rc:root/init.zetaw.bt_vendor.rc \
-    device/lge/g2m/rootdir/init.zetaw.class_core.sh:root/init.zetaw.class_core.sh \
-    device/lge/g2m/rootdir/init.zetaw.cmm.usb.sh:root/init.zetaw.cmm.usb.sh \
-    device/lge/g2m/rootdir/init.zetaw.early_boot.sh:root/init.zetaw.early_boot.sh \
-    device/lge/g2m/rootdir/init.zetaw.factory.sh:root/init.zetaw.factory.sh \
-    device/lge/g2m/rootdir/init.zetaw.rc:root/init.zetaw.rc \
-    device/lge/g2m/rootdir/init.zetaw.ril.sh:root/init.zetaw.ril.sh \
-    device/lge/g2m/rootdir/init.zetaw.sh:root/init.zetaw.sh \
-    device/lge/g2m/rootdir/init.zetaw.ssr.sh:root/init.zetaw.ssr.sh \
-    device/lge/g2m/rootdir/init.zetaw.syspart_fixup.sh:root/init.zetaw.syspart_fixup.sh \
-    device/lge/g2m/rootdir/init.zetaw.usb.rc:root/init.zetaw.usb.rc \
-    device/lge/g2m/rootdir/init.zetaw.usb.sh:root/init.zetaw.usb.sh \
-    device/lge/g2m/rootdir/ueventd.g2m.rc:root/ueventd.g2m.rc \
-    device/lge/g2m/rootdir/sbin/bbx:root/sbin/bbx \
-    device/lge/g2m/rootdir/fscheck.sh:root/fscheck.sh
+    device/lge/g2m/rootdir/ueventd.g2m.rc:root/ueventd.g2m.rc
+
+# OTA
+PRODUCT_COPY_FILES += \
+    device/lge/g2m/prebuilt/fixup.sh:fixup.sh
 
 # TWRP
 PRODUCT_COPY_FILES += \
     device/lge/g2m/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
+# Offmode Charging
+PRODUCT_PACKAGES += \
+    charger_res_g2m \
+    charger_g2m
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -148,7 +127,6 @@ PRODUCT_PACKAGES += \
     amix \
     arec \
     alsaucm_test
-    
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -156,7 +134,8 @@ PRODUCT_PACKAGES += \
     libbson \
     libcurl \
     tcpdump \
-    Torch
+    Torch \
+    libxml2
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -164,7 +143,7 @@ PRODUCT_PACKAGES += \
 
 # Keyhandler
 PRODUCT_PACKAGES += \
-    com.cyanogenmod.keyhandle
+    com.cyanogenmod.keyhandler
 
 # Crda
 PRODUCT_PACKAGES += \
@@ -177,15 +156,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    HoloSpiralWallpaper \
-    VisualizationWallpapers \
-    librs_jni
-
 # Wifi
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \
@@ -195,6 +165,17 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
     libwcnss_qmi \
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8226
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/gps/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
+    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
 # Charger
 PRODUCT_PACKAGES += charger charger_res_images
@@ -224,10 +205,8 @@ PRODUCT_PACKAGES += \
     copybit.msm8226\
     gralloc.msm8226 \
     hwcomposer.msm8226 \
-    keystore.msm8226 \
     lights.msm8226 \
     memtrack.msm8226 \
-    nfc_lg.default \
     power.msm8226
 
 # QRNG
@@ -295,75 +274,54 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     libnetcmdiface
 
-# QCOM
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
-
-# Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
-    ro.qc.sdk.audio.ssr=false
-
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.bt.le_dev_pwr_class=1 \
     ro.bluetooth.hfp.ver=1.6 \
-    ro.qualcomm.bluetooth.sap=true \
-    ro.qualcomm.bt.hci_transport=smd \
-    ro.bluetooth.request.master=true \
-    ro.bluetooth.remote.autoconnect=true
-
-# Media
-PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
-    qcom.hw.aac.encoder=true \
-    af.resampler.quality=255 \
-    persist.audio.lowlatency.rec=false \
-    persist.sys.media.use-awesome=true
+    ro.qualcomm.bt.hci_transport=smd
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.qc.sub.rstrtlvl=3 \
     persist.sys.qc.sub.rdump.on=1 \
-    persist.sys.qc.sub.rdump.max=20 \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
 
-# Media
+# Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.enable-player=true \
-    media.stagefright.enable-http=true \
-    media.stagefright.enable-aac=true \
-    media.stagefright.enable-qcp=true \
-    media.stagefright.enable-fma2dp=true \
-    media.stagefright.enable-scan=true \
-    mmp.enable.3g2=true \
-    ro.audio.fm_max_volume=4096 \
-    ro.qualcomm.cabl=0 \
-    use.voice.path.for.pcm.voip=true \
-    qcom.bt.le_dev_pwr_class=1 \
-    ro.qc.sdk.audio.ssr=false \
-    persist.audio.fluence.voicecall=false \
-    persist.audio.fluence.voicerec=false \
-    ro.qc.sdk.audio.fluencetype=none \
-    persist.audio.fluence.speaker=false \
-    use.voice.path.for.pcm.voip=true \
-    use.dedicated.device.for.voip=true \
+    audio.offload.24bit.enable=false \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=false \
+    audio.offload.multiple.enabled=false \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
     av.offload.enable=false \
-    av.streaming.offload.enable=false \
-    audio.offload.pcm.enable=false \
-    mm.enable.smoothstreaming=true \
-    qcom.hw.aac.encoder=true \
-    persist.audio.calfile0=/etc/ACDB/Bluetooth_cal.acdb \
-    persist.audio.calfile1=/etc/ACDB/General_cal.acdb \
-    persist.audio.calfile2=/etc/ACDB/Global_cal.acdb \
-    persist.audio.calfile3=/etc/ACDB/Handset_cal.acdb \
-    persist.audio.calfile4=/etc/ACDB/Hdmi_cal.acdb \
-    persist.audio.calfile5=/etc/ACDB/Headset_cal.acdb \
-    persist.audio.calfile6=/etc/ACDB/Speaker_cal.acdb
+    av.streaming.offload.enable=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.calfile0=/etc/Bluetooth_cal.acdb \
+    persist.audio.calfile1=/etc/General_cal.acdb \
+    persist.audio.calfile2=/etc/Global_cal.acdb \
+    persist.audio.calfile3=/etc/Handset_cal.acdb \
+    persist.audio.calfile4=/etc/Hdmi_cal.acdb \
+    persist.audio.calfile5=/etc/Headset_cal.acdb \
+    persist.audio.calfile6=/etc/Speaker_cal.acdb
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.fluencetype=endfire \
+    ro.qc.sdk.audio.ssr=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    use.voice.path.for.pcm.voip=true
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -375,18 +333,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modem.no_wdog_chk=1 \
     persist.call_recording.enabled=1
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
-# NFC
+# NFC packages
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
     NfcNci \
+    Tag \
     nfc_nci.pn54x.default \
-    Tag
+    com.android.nfc_extras
 
-PRODUCT_COPY_FILES += \
-    device/lge/g2m/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/lge/g2m/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    device/lge/g2m//nfc/nfcee_access.xml:system/etc/nfcee_access.xml
+NFCEE_ACCESS_PATH := device/lge/g2m/prebuilt/etc/nfcee_access.xml
 
 # QC time services
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -396,16 +353,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
 
-# Softkeys
+# Enable SCREEN BUTTONS by default
 PRODUCT_PROPERTY_OVERRIDES += \
     qemu.hw.mainkeys=0
 
+# CmUpdater
+PRODUCT_PROPERTY_OVERRIDES += \
+    cm.updater.uri=http://api.quarx.cm-for.us/api
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-PRODUCT_LOCALES := en_US
-PRODUCT_LOCALES += hdpi
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+# Screen density
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 $(call inherit-product, vendor/lge/g2m/g2m-vendor.mk)
+

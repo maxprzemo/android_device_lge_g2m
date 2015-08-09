@@ -45,10 +45,6 @@
         <item>15</item>
     </integer-array>
 
-    <!-- Performance profiles -->
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
-
     <!-- Whether to enable auto provisioning the app for new SIM card on boot.
     <bool name="config_auto_provision_enable">true</bool>
 -->
@@ -245,9 +241,24 @@
             8 - Assistant (search)
             16 - App switch
             32 - Camera
+            64 - Volume rocker
         For example, a device with Home, Back and Menu keys would set this
         config to 7. -->
-    <integer name="config_deviceHardwareKeys">1</integer>
+    <integer name="config_deviceHardwareKeys">65</integer>
+
+    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following keys present:
+             1 - Home
+             2 - Back
+             4 - Menu
+             8 - Assistant (search)
+            16 - App switch
+            32 - Camera
+            64 - Volume rocker
+         For example, a device with Home, Back and Menu keys would set this
+         config to 7. -->
+    <integer name="config_deviceHardwareWakeKeys">1</integer>
 
     <!-- Device supports LED flashlight 
     <bool name="config_enableTorch">true</bool> -->
@@ -255,26 +266,12 @@
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
-    <!-- Enable the option to check proximity sensor when deciding whether to
-         turn the screen on.
-         NOTE ! - Enable for devices that have a fast response proximity sensor
-    <bool name="config_proximityCheckOnWake">true</bool>
-    <integer name="config_proximityCheckTimeout">400</integer>
- -->
-    <!-- Need check this values -->
-<!--     <integer-array name="config_smartCoverWindowCoords"> -->
- <!--        <item>55</item>  -->   <!-- Top -->
- <!--        <item>200</item> -->   <!-- Left -->
- <!--        <item>850</item>  -->  <!-- Bottom -->
- <!--        <item>880</item>  -->  <!-- Right -->
- <!--    </integer-array> -->
-
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
 
     <!-- Whether UI for multi user should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
-    
+
     <!-- Display low battery warning when battery level dips to this value -->
     <integer name="config_lowBatteryWarningLevel">10</integer>
 
@@ -285,18 +282,5 @@
      <!-- Full qualified name of the class that implements
     com.android.internal.os.DeviceKeyHandler interface. -->
     <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.settings.device.KeyHandler</string>
-	
-	    <!-- Screen brightness when dozing -->
-    <integer name="config_screenBrightnessDoze">17</integer>
-
-    <!-- Dream of notifications -->
-    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-    <bool name="config_dozeAfterScreenOff">true</bool>
-    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
-    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
-
-    <!-- Wether doze feature is enabled by default in settings. -->
-    <bool name="config_doze_enabled_by_default">false</bool>
-    <bool name="config_dozeAfterScreenOff">true</bool>
 
 </resources>

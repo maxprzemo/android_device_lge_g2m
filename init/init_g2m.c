@@ -66,7 +66,6 @@ int check_cmdline(char param[]) {
     return 0;
 }
 
- 
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char serial[PROP_VALUE_MAX];
@@ -77,12 +76,34 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     UNUSED(msm_ver);
     UNUSED(board_type);
 
-    property_set("ro.product.device", "g2m");
-    property_set("ro.product.model", "LG-D620");
-    property_set("ro.nfc.port", "I2C");
-    property_set("persist.radio.multisim.config", "");
-    property_set("telephony.lteOnCdmaDevice", "1");
     property_get("ro.boot.serialno", serial);
-    property_set("ro.telephony.ril_class", "LgeG2MRIL");
-
+     if (strncmp(serial, "LG-D620", 6) == 0) {
+        property_set("ro.product.model", "LG-D620");
+        property_set("ro.product.device", "g2m");
+        property_set("ro.build.description", "g2m_global_com-user 4.4.2 KOT49I.A1404447153 1404447153 release-keys");
+        property_set("ro.build.fingerprint", "lge/g2m_global_com/g2m:4.4.2/KOT49I.A1404447153/1404447153:user/release-keys");
+        property_set("persist.radio.multisim.config", "");
+    } else if (strncmp(serial, "LGD618", 6) == 0) {
+        /* D618 */
+        property_set("ro.product.model", "LG-D618");
+        property_set("ro.product.device", "g2mds");
+        property_set("ro.build.description", "g2mds_global_com-user 4.4.2 KOT49I.A1397623902 1397623902 release-keys");
+        property_set("ro.build.fingerprint", "lge/g2mds_global_com/g2mds:4.4.2/KOT49I.A1397623902/1397623902:user/release-keys");
+        property_set("persist.radio.multisim.config", "dsds");
+    } else if (strncmp(serial, "LGD610", 6) == 0) {
+        /*D610*/
+        property_set("ro.product.model", "LG-D610");
+        property_set("ro.product.device", "g2mss");
+        property_set("ro.build.description", "g2m_global_com-user 4.4.2 KOT49I.A1404447153 1404447153 release-keys");
+        property_set("ro.build.fingerprint", "lge/g2m_global_com/g2m:4.4.2/KOT49I.A1404447153/1404447153:user/release-keys");
+        property_set("persist.radio.multisim.config", "");
+    } else {
+        /* XXX */
+        property_set("ro.product.device", "g2m");
+        property_set("ro.product.model", "Please write your model name to agent00791@gmail.com");
+        property_set("persist.radio.multisim.config", "");
     }
+    property_get("ro.product.device", device);
+    strlcpy(devicename, device, sizeof(devicename));
+    ERROR("Found hardware id: %s setting build properties for %s device\n", serial, devicename);
+}
