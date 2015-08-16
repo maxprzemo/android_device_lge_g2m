@@ -114,11 +114,8 @@ on boot
     # AKM setting data
     mkdir /data/misc/sensors
     chmod 775 /data/misc/sensors
-    # fix sensor daenon
-    mkdir /persist/sensors 0775 system root
-    write /persist/sensors/sensors_settings 1
-    chmod 0644 /persist/sensors/sensors_settings
-    chown system root /persist/sensors/sensors_settings
+    mkdir /persist/sensors
+    chmod 775 /persist/sensors
 
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -310,13 +307,6 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
-
-# FM Radio
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    user root
-    group system
-    disabled
-    oneshot
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -594,7 +584,7 @@ on property:sys.boot_completed=1
     chmod 0664 /sys/devices/system/cpu/cpu1/online
     chmod 0664 /sys/devices/system/cpu/cpu2/online
     chmod 0664 /sys/devices/system/cpu/cpu3/online
-#    start mpdecision
+    start mpdecision
 
 # Charger
 on property:ro.bootmode=chargerlogo
